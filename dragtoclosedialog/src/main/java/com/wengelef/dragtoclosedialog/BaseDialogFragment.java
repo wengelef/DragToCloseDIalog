@@ -25,7 +25,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
 
-public abstract class BaseDialogFragment extends DialogFragment {
+abstract class BaseDialogFragment extends DialogFragment {
 
     private static final int ANIMATION_DURATION = 200;
 
