@@ -24,5 +24,12 @@ public class MainActivity extends AppCompatActivity {
                 new BottomCloseDialog().show(getSupportFragmentManager(), "BottomCloseDialog");
             }
         });
+
+        findViewById(R.id.button_close_top).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new TopCloseDialog().show(getSupportFragmentManager(), "TopCloseDialog");
+            }
+        });
     }
 }
