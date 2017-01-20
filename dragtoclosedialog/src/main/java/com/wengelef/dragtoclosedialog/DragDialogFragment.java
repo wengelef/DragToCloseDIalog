@@ -16,8 +16,8 @@
 
 package com.wengelef.dragtoclosedialog;
 
+import android.support.annotation.NonNull;
 import android.support.v4.view.MotionEventCompat;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -48,6 +48,7 @@ public abstract class DragDialogFragment extends BaseDialogFragment {
         };
     }
 
+    @NonNull
     protected CloseDirection getCloseDirection() {
         return CloseDirection.DEFAULT;
     }
