@@ -16,38 +16,26 @@
 
 package com.wengelef.dragtoclosedialog;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 import android.support.v4.view.MotionEventCompat;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 
 public abstract class DragDialogFragment extends BaseDialogFragment {
+
+    public enum CloseDirection { DEFAULT, TOP, BOTTOM }
 
     private static final int DRAG_TO_DISMISS_DISTANCE = 400;
 
     private float mInitialDragContainerPosition;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(getLayoutResId(), container, false);
-
-        root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                close();
-            }
-        });
-        return root;
-    }
+    private CloseDirection mCloseDirection;
 
     @Override
     public void onStart() {
         mAnimationListener = getDialogAnimationListener();
         getContentView().setOnTouchListener(getTouchListener());
+        mCloseDirection = getCloseDirection();
         super.onStart();
     }
 
@@ -58,6 +46,11 @@ public abstract class DragDialogFragment extends BaseDialogFragment {
                 mInitialDragContainerPosition = getContentView().getY();
             }
         };
+    }
+
+    @NonNull
+    protected CloseDirection getCloseDirection() {
+        return CloseDirection.DEFAULT;
     }
 
     private View.OnTouchListener getTouchListener() {
@@ -104,12 +97,29 @@ public abstract class DragDialogFragment extends BaseDialogFragment {
             }
 
             private void onDragEnd() {
-                if (mDistanceCovered > DRAG_TO_DISMISS_DISTANCE) {
-                    close();
-                } else {
-                    getContentView().animate().y(mInitialDragContainerPosition);
+                if (getCloseBottom()) {
+                    if (mDistanceCovered > DRAG_TO_DISMISS_DISTANCE) {
+                        close();
+                    } else {
+                        getContentView().animate().y(mInitialDragContainerPosition);
+                    }
+                }
+                if (getCloseTop()) {
+                    if (mDistanceCovered < (DRAG_TO_DISMISS_DISTANCE * -1)) {
+                        close();
+                    } else {
+                        getContentView().animate().y(mInitialDragContainerPosition);
+                    }
                 }
             }
         };
+    }
+
+    private boolean getCloseBottom() {
+        return mCloseDirection.equals(CloseDirection.DEFAULT) || mCloseDirection.equals(CloseDirection.BOTTOM);
+    }
+
+    private boolean getCloseTop() {
+        return mCloseDirection.equals(CloseDirection.DEFAULT) || mCloseDirection.equals(CloseDirection.TOP);
     }
 }
