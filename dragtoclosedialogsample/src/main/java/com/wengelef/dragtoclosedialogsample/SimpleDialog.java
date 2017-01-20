@@ -2,14 +2,12 @@ package com.wengelef.dragtoclosedialogsample;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.wengelef.dragtoclosedialog.DragDialogFragment;
 
 
-public class TestDialog extends DragDialogFragment {
+public class SimpleDialog extends DragDialogFragment {
 
     private View mContentView;
 
