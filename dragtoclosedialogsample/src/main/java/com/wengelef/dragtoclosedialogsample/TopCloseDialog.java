@@ -18,6 +18,7 @@ public class TopCloseDialog extends DragDialogFragment {
         mContentView = view.findViewById(R.id.content_view);
     }
 
+    @NonNull
     @Override
     protected View getContentView() {
         return mContentView;
