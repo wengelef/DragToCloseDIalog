@@ -32,7 +32,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.github.wengelef:DragToCloseDialog:0.2.0'
+    compile 'com.github.wengelef:DragToCloseDialog:0.3.0'
 }
 ```
 
@@ -51,7 +51,7 @@ dependencies {
 <dependency>
     <groupId>com.github.wengelef</groupId>
     <artifactId>DragToCloseDialog</artifactId>
-    <version>0.1.0</version>
+    <version>0.3.0</version>
 </dependency>
 ```
 
