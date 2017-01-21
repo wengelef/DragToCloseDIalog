@@ -2,6 +2,8 @@
 
 Drag Dialog to either Top or Bottom to close
 
+<img src="https://cloud.githubusercontent.com/assets/12090174/22176693/46d63a20-e010-11e6-9dfc-950e038d1f80.gif" width=300></img>
+
 ## Usage
 
 Extend ``DragDialogFragment`` and override the abstract methods ``View getContentView()`` and ``int getLayoutResId()``.
