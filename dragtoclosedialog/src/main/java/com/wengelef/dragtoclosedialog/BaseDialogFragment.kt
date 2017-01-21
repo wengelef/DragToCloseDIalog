@@ -68,7 +68,7 @@ abstract class BaseDialogFragment : DialogFragment() {
 
         scaleDown.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
-                mAnimationListener?.onAnimationEnd()
+                dismiss()
             }
         })
 
