@@ -62,7 +62,7 @@ abstract class BaseDialogFragment : DialogFragment() {
         val fadeOut = ObjectAnimator.ofPropertyValuesHolder(decorView,
                 PropertyValuesHolder.ofFloat("alpha", 1f, 0f))
 
-        val scaleDown = ObjectAnimator.ofPropertyValuesHolder(decorView,
+        val scaleDown = ObjectAnimator.ofPropertyValuesHolder(getContentView(),
                 PropertyValuesHolder.ofFloat("scaleX", 1f, 0f),
                 PropertyValuesHolder.ofFloat("scaleY", 1f, 0f))
 
